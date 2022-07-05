@@ -4,12 +4,12 @@ namespace mvc1.Repositories;
 
 public class Repository : IRepository
 {
-    private Produto[] produtos = new Produto[]
-    {
-            new Produto() { ProdutoId = 10, Nome = "Caneta", Categoria = "Material", Preco = 2.0M },
-            new Produto() { ProdutoId = 20, Nome = "Borracha", Categoria = "Material", Preco = 1.5M },
-            new Produto() { ProdutoId = 30, Nome = "Estojo", Categoria = "Material", Preco = 3.0M }
-    };
+    private AppDbContext appDbContext;
 
-    public IEnumerable<Produto> Produtos { get => produtos; }
+    public IEnumerable<Produto>? Produtos => appDbContext.Produtos;
+
+    public Repository(AppDbContext appDbContext)
+    {
+        this.appDbContext = appDbContext;
+    }
 }

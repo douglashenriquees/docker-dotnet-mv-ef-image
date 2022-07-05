@@ -4,5 +4,5 @@ namespace mvc1.Repositories;
 
 public interface IRepository
 {
-    IEnumerable<Produto> Produtos { get; }
+    IEnumerable<Produto>? Produtos { get; }
 }
