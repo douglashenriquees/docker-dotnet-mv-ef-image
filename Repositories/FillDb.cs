@@ -7,7 +7,7 @@ public static class FillDb
 {
     public static void FillDataDb(IApplicationBuilder app)
     {
-
+        FillDataDb(app);
     }
 
     private static void FillDataDb(AppDbContext appDbContext)
