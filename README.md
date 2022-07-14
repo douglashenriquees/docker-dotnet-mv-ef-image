@@ -24,4 +24,4 @@
 * ```docker image tag asp-net-mvc/app:2.0 username/mvc-produtos:2.0```
 * ```docker login -u username```
 * ```docker image push username/mvc-produtos:2.0```
-* ```docker container run -p 8800:80 --name mvc-produtos-from-hub username/mvc-produtos:2.0```
+* ```docker container run -p 8800:80 -e DBHOST=172.17.0.2 --name mvc-produtos-from-hub username/mvc-produtos:2.0```
