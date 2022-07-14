@@ -15,4 +15,13 @@
 * ```dotnet publish -c Release -o dist```
 * ```docker image build -t asp-net-mvc/app:2.0 .```
 * ```docker network inspect bridge```
-* ```docker container run -d -p 4000:80 -e DBHOST=172.17.0.2:3306 --name mvc-produtos asp-net-mvc-ef/app2:2.0```
+  * verifica a rede interna definida por software do docker, para visalizar os **IPs** de cada container
+* ```docker container run -d -p 4400:80 -e DBHOST=172.17.0.2 --name mvc-produtos asp-net-mvc/app:2.0```
+  * cria o container e aplica a variável de ambiente **DBHOST**, equivalente ao endereço **IP** do container do **MySql** disponível na rede interna do docker
+
+## Publicando a Imagem
+
+* ```docker image tag asp-net-mvc/app:2.0 username/mvc-produtos:2.0```
+* ```docker login -u username```
+* ```docker image push username/mvc-produtos:2.0```
+* ```docker container run -p 8800:80 --name mvc-produtos-from-hub username/mvc-produtos:2.0```
