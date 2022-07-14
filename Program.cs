@@ -1,14 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using mvc1.Repositories;
 
-var connectionString = "Server=localhost;Port=3306;Uid=root;Pwd=strongpass;Database=produtosdb;";
+var host = Environment.GetEnvironmentVariable("DBHOST") ?? "localhost";
+var port = Environment.GetEnvironmentVariable("DBPORT") ?? "3306";
+var password = Environment.GetEnvironmentVariable("DBPASSWORD") ?? "strongpass";
+
+var connectionString = $"Server={host};Port={port};Uid=root;Pwd={password};Database=produtosdb;";
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddTransient<IRepository, Repository>();
-builder.Services.AddDbContext<AppDbContext>(
-    options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 
@@ -22,6 +27,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+
+FillDb.FillDataDb(app);
 
 app.MapControllerRoute(
     name: "default",
