@@ -13,6 +13,6 @@
 ## Imagem
 
 * ```dotnet publish -c Release -o dist```
-* ```docker image build -t asp-net-mvc-ef/app2:2.0 .```
+* ```docker image build -t asp-net-mvc/app:2.0 .```
 * ```docker network inspect bridge```
 * ```docker container run -d -p 4000:80 -e DBHOST=172.17.0.2:3306 --name mvc-produtos asp-net-mvc-ef/app2:2.0```
