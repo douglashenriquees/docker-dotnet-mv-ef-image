@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using mvc1.Repositories;
+using mvc.Repositories;
 
 var host = Environment.GetEnvironmentVariable("DBHOST") ?? "localhost";
 var port = Environment.GetEnvironmentVariable("DBPORT") ?? "3306";
