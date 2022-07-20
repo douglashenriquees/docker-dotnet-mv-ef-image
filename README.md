@@ -15,7 +15,7 @@
 * ```dotnet publish -c Release -o dist```
 * ```docker image build -t asp-net-mvc/app:2.0 .```
 * ```docker network inspect bridge```
-  * verifica a rede interna definida por software do docker, para visalizar os **IPs** de cada container
+  * verifica a rede interna definida por software do docker, para visualizar os **IPs** de cada container
 * ```docker container run -d -p 4400:80 -e DBHOST=172.17.0.2 --name mvc-produtos asp-net-mvc/app:2.0```
   * cria o container e aplica a variável de ambiente **DBHOST**, equivalente ao endereço **IP** do container do **MySql** disponível na rede interna do docker
 
